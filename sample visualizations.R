@@ -24,7 +24,6 @@ rpivotTable(data = total_df , rows = c("year","month"),cols="DOMAIN_",
 #####################################################
 
 # ggplot theme-------------------------------------------------------------------------------------------------
-# define ggplot2 theme
 theme_tm <- function(){
   theme(
     text                = element_text(family = "myfont", size = 16),
@@ -42,7 +41,7 @@ theme_tm <- function(){
   )
 }
 
-#ggplot line
+#ggplot line-------------------------------------------------------------------------------------------------
 total_df%>%
   filter(year!=2014)%>%
   group_by(year,month) %>%
@@ -55,7 +54,7 @@ total_df%>%
   scale_x_discrete(limits=seq(1, 12,1))+
   scale_y_continuous(labels=comma)
 
-# bar chart
+# bar chart-------------------------------------------------------------------------------------------------
 ggplot(data_question1,aes( x = salary,y=count,fill=type)) +
   geom_bar(stat="identity",position = position_dodge())+
   facet_wrap(~type)+
